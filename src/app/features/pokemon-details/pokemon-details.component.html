@@ -1,44 +1,90 @@
-<!-- <p>{{pokemon | json}}</p> -->
-<div style="overflow: hidden;">
-<div class="row" style="background-color: aquamarine;color: black;padding:60px 10px;">
+<div style="overflow: hidden">
+  <div class="row" style="background-color: rgb(33, 30, 30); color: white">
     <div class="col-md-2"></div>
     <div class="col-md-4">
-        <img style='height: 100%;' src="{{pokemon?.frontImgUrl}}" alt="">
+      <carousel style="height: 100%">
+        <slide *ngFor="let image of images">
+          <img
+            [src]="image"
+            alt=""
+            style="height: 100%; object-fit: cover; width: 100%"
+          />
+        </slide>
+      </carousel>
     </div>
-    <div class="col-md-4">
-        <h1>{{pokemon?.name | titlecase}}</h1><br><br>
-        <h5>Height : {{pokemon?.height}}</h5><br>
-        <h5>Weight : {{pokemon?.weight}}</h5>
-        <h6>{{evolutions | json}}</h6>
+    <div
+      class="col-md-4"
+      style="
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 3rem;
+      "
+    >
+      <h1>{{ pokemon?.name | titlecase }}</h1>
+      <br /><br />
+      <h5>Experience : {{ pokemon?.experience }}</h5>
+      <br />
+      <h5>Height : {{ pokemon?.height }}</h5>
+      <br />
+      <h5>Weight : {{ pokemon?.weight }}</h5>
     </div>
     <div class="col-md-2"></div>
+  </div>
+  <div
+    class="row"
+    style="display: flex; justify-content: space-around; margin-top: 3rem"
+  >
+    <ng-container
+      class="col-md-4"
+      *ngFor="let pokemon of evolutionPokemons; let i = index"
+    >
+      <div class="col-md-3" style="cursor: pointer">
+        <a style="text-decoration: none" href="/details/{{ pokemon.name }}">
+          <div class="card mb-4">
+            <h4
+              style="display: flex; justify-content: center; padding-top: 1rem"
+            >
+              {{ pokemon.name | titlecase }}
+            </h4>
 
-</div>
+            <img
+              style="height: 100%"
+              src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/{{
+                pokemon.id
+              }}.png"
+              alt="Bulbasaur"
+            />
+          </div>
+        </a>
+      </div>
+    </ng-container>
+  </div>
 
-<div class="row" style="margin:5rem 20rem;">
-            <table class="table table-bordered" >
-                <thead>
-                    <tr>
-                        <th>Moves</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let move of pokemon?.moves">
-                        <td>{{ move | titlecase }}</td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Abilities</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let ability of pokemon?.abilities">
-                        <td>{{ ability | titlecase}}</td>
-                    </tr>
-                </tbody>
-            </table>
-</div>
+  <div class="row" style="margin: 5rem 20rem">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Abilities</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ability of pokemon?.abilities">
+          <td>{{ ability | titlecase }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Moves</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let move of pokemon?.moves">
+          <td>{{ move | titlecase }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { ListPokemonComponent } from './features/list-pokemon/list-pokemon.component';
 import { PokemonDetailsComponent } from './features/pokemon-details/pokemon-details.component';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PokemonDetailsComponent } from './features/pokemon-details/pokemon-deta
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

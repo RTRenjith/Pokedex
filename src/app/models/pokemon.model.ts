@@ -1,6 +1,5 @@
 export interface Pokemon{
     name: string,
-    // url: string,
     id: string
     abilities: string[],
     height: string,
@@ -8,5 +7,6 @@ export interface Pokemon{
     moves:string[],
     frontImgUrl: string,
     backImgUrl: string,
-    types: string[]
+    types: string[],
+    experience: string
 };
