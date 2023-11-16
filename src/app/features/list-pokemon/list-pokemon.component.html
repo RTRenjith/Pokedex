@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <h1 class="mt-3">Pokedex</h1>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Enter Pokemon name" aria-label="Recipient's username" aria-describedby="basic-addon2">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button">search</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <ng-container class="col-md-4" *ngFor="let pokemon of pokemons;">
+      <div class="card mb-4">
+        <div class="row">
+          <div class="col-8">
+            <h4>{{pokemon.name}}</h4>
+            <span *ngFor="let type of pokemon.types"
+						class="badge border rounded-pill me-1 " style="background-color: black;">
+						{{type | titlecase}}
+					</span>
+          </div>
+          <div class="col-4">
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/{{pokemon.id}}.png" alt="Bulbasaur">
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
