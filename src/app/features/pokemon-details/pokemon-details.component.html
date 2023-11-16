@@ -1,0 +1,44 @@
+<!-- <p>{{pokemon | json}}</p> -->
+<div style="overflow: hidden;">
+<div class="row" style="background-color: aquamarine;color: black;padding:60px 10px;">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+        <img style='height: 100%;' src="{{pokemon?.frontImgUrl}}" alt="">
+    </div>
+    <div class="col-md-4">
+        <h1>{{pokemon?.name | titlecase}}</h1><br><br>
+        <h5>Height : {{pokemon?.height}}</h5><br>
+        <h5>Weight : {{pokemon?.weight}}</h5>
+        <h6>{{evolutions | json}}</h6>
+    </div>
+    <div class="col-md-2"></div>
+
+</div>
+
+<div class="row" style="margin:5rem 20rem;">
+            <table class="table table-bordered" >
+                <thead>
+                    <tr>
+                        <th>Moves</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let move of pokemon?.moves">
+                        <td>{{ move | titlecase }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Abilities</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let ability of pokemon?.abilities">
+                        <td>{{ ability | titlecase}}</td>
+                    </tr>
+                </tbody>
+            </table>
+</div>
+</div>
